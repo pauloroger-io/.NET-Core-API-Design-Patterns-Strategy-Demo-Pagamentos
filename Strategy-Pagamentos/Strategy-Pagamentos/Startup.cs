@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Strategy_Pagamentos.Model.FormasDePagameto;
+using Strategy_Pagamentos.Model.Preco;
 
 namespace Strategy_Pagamentos
 {
@@ -26,6 +28,12 @@ namespace Strategy_Pagamentos
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            // Injetando dependências
+            services.AddScoped<IPreco, Preco>();
+            services.AddScoped<IFormasDePagamento, PagamentoBoleto>();
+            services.AddScoped<IFormasDePagamento, PagamentoCartaoCredito>();
+            services.AddScoped<IFormasDePagamento, PagamentoCartaoDebito>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
