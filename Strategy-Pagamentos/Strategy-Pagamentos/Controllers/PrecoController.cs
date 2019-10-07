@@ -29,24 +29,24 @@ namespace Strategy_Pagamentos.Controllers
             precoBoletoDTO.ProdutoID = id;
             precoBoletoDTO.FormaDePagamento = FormasDePagamentoENUM.PagamentoBoleto;
             precoBoletoDTO.DescricaoDaFormaDePagamento = "Boleto";
-            precoBoletoDTO.PrecoBase = 100; // Consultar no banco pelo ID
-            precoBoletoDTO.PrecoFinal = _preco.PrecoPorFormaDePagamento(precoBoletoDTO);
+            precoBoletoDTO.PrecoBase = _preco.PrecoBasePorID(precoBoletoDTO);
+            precoBoletoDTO.PrecoFinal = _preco.PrecoPorFormaDePagamento(precoBoletoDTO); // Strategy aqui
             precos.Add(precoBoletoDTO);
 
             PrecoDTO precoCartaoCreditoDTO = new PrecoDTO();
             precoCartaoCreditoDTO.ProdutoID = id;
             precoCartaoCreditoDTO.FormaDePagamento = FormasDePagamentoENUM.PagamentoCartaoCredito;
             precoCartaoCreditoDTO.DescricaoDaFormaDePagamento = "Cartao de Credito";
-            precoCartaoCreditoDTO.PrecoBase = 100; // Consultar no banco pelo ID
-            precoCartaoCreditoDTO.PrecoFinal = _preco.PrecoPorFormaDePagamento(precoCartaoCreditoDTO);
+            precoCartaoCreditoDTO.PrecoBase = _preco.PrecoBasePorID(precoCartaoCreditoDTO);
+            precoCartaoCreditoDTO.PrecoFinal = _preco.PrecoPorFormaDePagamento(precoCartaoCreditoDTO); // Strategy aqui
             precos.Add(precoCartaoCreditoDTO);
 
             PrecoDTO precoCartaoDebitoDTO = new PrecoDTO();
             precoCartaoDebitoDTO.ProdutoID = id;
             precoCartaoDebitoDTO.FormaDePagamento = FormasDePagamentoENUM.PagamentoCartaoDebito;
             precoCartaoDebitoDTO.DescricaoDaFormaDePagamento = "Cartao de Debito";
-            precoCartaoDebitoDTO.PrecoBase = 100; // Consultar no banco pelo ID
-            precoCartaoDebitoDTO.PrecoFinal = _preco.PrecoPorFormaDePagamento(precoCartaoDebitoDTO);
+            precoCartaoDebitoDTO.PrecoBase = _preco.PrecoBasePorID(precoCartaoDebitoDTO);
+            precoCartaoDebitoDTO.PrecoFinal = _preco.PrecoPorFormaDePagamento(precoCartaoDebitoDTO); // Strategy aqui
             precos.Add(precoCartaoDebitoDTO);
 
             return new JsonResult(precos);

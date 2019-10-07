@@ -8,5 +8,6 @@ namespace Strategy_Pagamentos.Model.Preco
     public interface IPreco
     {
         decimal PrecoPorFormaDePagamento(PrecoDTO parametros);
+        decimal PrecoBasePorID(PrecoDTO parametros);
     }
 }
